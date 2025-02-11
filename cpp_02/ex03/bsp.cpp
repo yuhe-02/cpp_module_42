@@ -1,7 +1,6 @@
 #include "includes/Point.hpp"
 #include <iostream>
 
-// TODO understand external cross
 static Point calc_edge_vector(const Point &A, const Point &B) {
 	const float diff_x = B.getX().toFloat() - A.getX().toFloat();
 	const float diff_y = B.getY().toFloat() - A.getY().toFloat();

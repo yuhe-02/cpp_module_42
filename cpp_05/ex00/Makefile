@@ -1,5 +1,5 @@
 CPP = c++
-CPP_FLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 PROGRAM_NAME = bureaucrat
 

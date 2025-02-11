@@ -1,4 +1,3 @@
-// TODO define cpp
 #include "IMateriaSource.hpp"
 #include <iostream>
 

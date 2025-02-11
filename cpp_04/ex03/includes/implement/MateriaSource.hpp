@@ -3,7 +3,6 @@
 
 # include <string>
 # include "IMateriaSource.hpp"
-// TODO define hpp
 #define MAX_MATERIAL 4
 class MateriaSource: public IMateriaSource {
 	private:

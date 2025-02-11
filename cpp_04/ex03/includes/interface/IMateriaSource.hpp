@@ -2,7 +2,6 @@
 # define __IMATERIASOURCE_HPP__
 
 # include <string>
-// TODO define hpp
 #include "AMateria.hpp"
 class IMateriaSource {
 	protected:

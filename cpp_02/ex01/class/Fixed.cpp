@@ -51,7 +51,6 @@ float	Fixed::toFloat(void) const {
 	return ((float)this->fixedPointValue / (float)(1 << Fixed::fractionalBits));
 }
 
-// TODO understand
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed) {
     os << fixed.toFloat();
         return os;

@@ -90,7 +90,6 @@ void Character::equip(AMateria* m) {
 	return ;
 }
 
-// TODO define overloaded function
 void Character::unequip(int idx) {
 	if (idx < 0 || idx >= MAX_EQUIP) {
 		std::cout << "Character: " << this->name_ << " failed to unequip(because of index out of range) in index:  " << idx << std::endl;

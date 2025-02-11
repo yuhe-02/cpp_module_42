@@ -1,2 +1,2 @@
 make re
-./bureaucrat
+valgrind --leak-check=full -q ./bureaucrat

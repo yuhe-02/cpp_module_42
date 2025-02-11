@@ -2,6 +2,9 @@
 *.d
 objs
 .vscode
+.venv
+bureaucrat
+
 # Compiled Object files
 *.slo
 *.lo

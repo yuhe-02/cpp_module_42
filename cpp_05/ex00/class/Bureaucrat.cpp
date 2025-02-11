@@ -38,6 +38,10 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy) {
 
 // getter, setter
 void Bureaucrat::setGrade(int grade) {
+	if (grade > 150)
+		throw Bureaucrat::GradeTooHighException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooLowException();
 	this->grade_ = grade;
 }
 
@@ -47,4 +51,19 @@ int Bureaucrat::getGrade( void ) const {
 
 const std::string Bureaucrat::getName( void ) const {
 	return (this->name_);
+}
+
+const char *Bureaucrat::GradeTooLowException::what(void) const throw(){
+	return ("grade is too low");
+}
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw(){
+	return ("grade is too high");
+}
+
+// TODO create increment decrement
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {
+    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+    return os;
 }

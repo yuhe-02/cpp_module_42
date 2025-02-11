@@ -21,6 +21,16 @@ public:
 	~Bureaucrat();
 	const std::string getName(void) const;
 	int getGrade(void) const;
+	// TODO create increment decrement
+	class GradeTooHighException: std::exception {
+	public :
+		virtual const char *what() const throw();
+	};
+	class GradeTooLowException: std::exception {
+		public :
+			virtual const char *what() const throw();
+	};
 };
-std::ostream &operator<<(std::ostream &o, Bureaucrat *a);
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 #endif
