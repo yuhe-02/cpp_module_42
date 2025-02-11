@@ -21,10 +21,11 @@ public:
 	~Bureaucrat();
 	const std::string getName(void) const;
 	int getGrade(void) const;
-	// TODO create increment decrement
+	void incrementGrade(void);
+	void decrementGrade(void);
 	class GradeTooHighException: std::exception {
-	public :
-		virtual const char *what() const throw();
+		public :
+			virtual const char *what() const throw();
 	};
 	class GradeTooLowException: std::exception {
 		public :
