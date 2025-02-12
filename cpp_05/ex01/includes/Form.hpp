@@ -4,15 +4,22 @@
 #include <string>
 #include <iostream>
 #include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form {
-
 	private :
 		const std::string name_;
 		bool  isAssigned_;
 		const int signGrade_;
 		const int execGrade_;
 	public :
+		Form();
+		Form(const Form &copy);
+		Form(std::string name, int signGrade, int execGrade);
+		Form(int signGrade, int execGrade);
+		Form(std::string name);
+		Form &operator=(const Form & copy);
+		~Form();
 		class GradeTooHighException: std::exception {
 			public :
 				virtual const char *what() const throw();
@@ -21,12 +28,12 @@ class Form {
 			public :
 				virtual const char *what() const throw();
 		};
-		void beSigned(const Bureaucrat &bureaucrat);
-		const int getSignGrade( void ) const;
-		const int getExecGrade( void ) const;
+		void beSigned(Bureaucrat &bureaucrat);
+		int getSignGrade( void ) const;
+		int getExecGrade( void ) const;
 		bool getIsAssigned( void ) const;
 		const std::string getName( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const Form* form);
 #endif

@@ -1,165 +1,143 @@
-#include <iostream>
-#include "./includes/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int main() {
+int main(void)
+{
 	{
-		std::cout << "----normal test----" << std::endl;
-		Bureaucrat *s1 = new Bureaucrat();
-		std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-		delete s1;
-	}
-	{
-		std::cout << "----copy constructor ----" << std::endl;
-		Bureaucrat s1;
-		Bureaucrat s2(s1);
-		std::cout << "name: " << s2.getName() << ", grade: " << s2.getGrade() << std::endl;
-	}
-	{
-		std::cout << "----copy assignment ----" << std::endl;
-		Bureaucrat s1;
-		Bureaucrat s2;
-		s2 = s1;
-		std::cout << "name: " << s2.getName() << ", grade: " << s2.getGrade() << std::endl;
-	}
-	{
-		std::cout << "----constructor with name ----" << std::endl;
-		Bureaucrat *s1 = new Bureaucrat("tennis");
-		std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-		delete s1;
-	}
-	{
-		std::cout << "----constructor with grade ----" << std::endl;
-		Bureaucrat *s1 = new Bureaucrat("tennis");
-		std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-		delete s1;
-	}
-	{
-		std::cout << "----too high grade(constructor) ----" << std::endl;
-		Bureaucrat *s1 = 0;
-		try {
-			s1 = new Bureaucrat("tennis", 151);
-			s1->getName();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		}
-		if (s1) {
-			delete s1;
-		}
-	}
-	{
-		std::cout << "----too low grade(constructor) ----" << std::endl;
-		Bureaucrat *s1 = 0;
-		try {
-			s1 = new Bureaucrat("tennis", 0);
-			s1->getName();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		}
-		if (s1) {
-			delete s1;
-		}
-	}
-	{
-		std::cout << "----too high grade(constructor) ----" << std::endl;
-		Bureaucrat *s1 = 0;
-		try {
-			s1 = new Bureaucrat(151);
-			s1->getName();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		}
-		if (s1) {
-			delete s1;
-		}
-	}
-	{
-		std::cout << "----too low grade(constructor) ----" << std::endl;
-		Bureaucrat *s1 = 0;
-		try {
-			s1 = new Bureaucrat(0);
-			s1->getName();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
-			if (s1) {
-				std::cout << "name: " << s1->getName() << ", grade: " << s1->getGrade() << std::endl;
-			}
-		}
-		if (s1) {
-			delete s1;
-		}
-	}
-	{
-		std::cout << "----print test ----" << std::endl;
-		Bureaucrat s1(150);
-		std::cout << s1 << std::endl;
-	}
-	{
-		std::cout << "----increment test ----" << std::endl;
-		Bureaucrat s1(5);
-		s1.incrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.incrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.incrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.incrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *a = new Bureaucrat();
+		Form *b = new Form();
+		std::cout << std::endl;
 
-		try {
-			s1.incrementGrade();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
+		std::cout << "\033[34mTesting\033[0m" << std::endl;
+		std::cout << a;
+		std::cout << b;
+
+		try
+		{
+			b->beSigned(*a);
 		}
+		catch(Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << a->getName() << " was not able to sign " << b->getName() << ": " << e.what() << std::endl;
+		}
+
+		std::cout << b;
+		std::cout << std::endl;
+
+		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
+		delete a;
+		delete b;
+		std::cout << std::endl;
 	}
+	std::cout << "-------------------------------------------------------" << std::endl;
 	{
-		std::cout << "----decrement test ----" << std::endl;
-		Bureaucrat s1(146);
-		s1.decrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.decrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.decrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		s1.decrementGrade();
-		std::cout << "name: " << s1.getName() << ", grade: " << s1.getGrade() << std::endl;
-		try {
-			s1.decrementGrade();
-		} catch (const Bureaucrat::GradeTooHighException& e) {
-			std::cout << e.what() << std::endl;
-		} catch (const Bureaucrat::GradeTooLowException& e) {
-			std::cout << e.what() << std::endl;
+		std::cout << std::endl;
+
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *a = new Bureaucrat("Assistant", 145);
+		Bureaucrat *b = new Bureaucrat("CEO", 1);
+		Form *c = new Form("Rent Contract", 140, 100);
+		std::cout << std::endl;
+
+		std::cout << "\033[34mTesting\033[0m" << std::endl;
+		std::cout << a;
+		std::cout << b;
+		std::cout << c;
+
+		// Assistant signs the Form
+		try
+		{
+			// c->beSigned(*a);
+			a->signForm(*c);
 		}
+		catch(Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << "\033[33m" << a->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
+		}
+
+		// CEO signs the Form
+		std::cout << c;
+		try
+		{
+			c->beSigned(*b);
+			// b->signForm(*c);
+		}
+		catch(Bureaucrat::GradeTooLowException &e)
+		{
+			std::cerr << "\033[33m" << b->getName() << " was not able to sign the Form " << c->getName() << ": " << e.what() << "\033[0m" << std::endl;
+		}
+		std::cout << c;
+
+		// try signing the from again
+		b->signForm(*c);
+		std::cout << std::endl;
+
+		std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
+		delete a;
+		delete b;
+		delete c;
+		std::cout << std::endl;
+	}
+	std::cout << "-------------------------------------------------------" << std::endl;
+	{
+		std::cout << std::endl;
+
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Form *a = NULL;
+
+		// sign-grade too high
+		try
+		{
+			a = new Form(160, 145);
+		}
+		catch (Form::GradeTooLowException &e)
+		{
+			std::cerr << "\033[33mConstructing default failed: " <<
+			e.what() << "\033[0m" << std::endl;
+		}
+
+		// exec-grade too high
+		try
+		{
+			a = new Form(145, 160);
+		}
+		catch (Form::GradeTooLowException &e)
+		{
+			std::cerr << "\033[33mConstructing default failed: " <<
+			e.what() << "\033[0m" << std::endl;
+		}
+
+		// sign-grade too low
+		try
+		{
+			a = new Form(-15, 145);
+		}
+		catch (Form::GradeTooHighException &e)
+		{
+			std::cerr << "\033[33mConstructing default failed: " <<
+			e.what() << "\033[0m" << std::endl;
+		}
+
+		// exec-grade too low
+		try
+		{
+			a = new Form(145, -15);
+		}
+		catch (Form::GradeTooHighException &e)
+		{
+			std::cerr << "\033[33mConstructing default failed: " <<
+			e.what() << "\033[0m" << std::endl;
+		}
+
+		// Deconstruction to prevent unused variable, in this case will never be called
+		if (a != NULL)
+		{
+			std::cout << std::endl;
+			std::cout << "\033[34mDeconstructing\033[0m" << std::endl;
+			delete a;
+		}
+		std::cout << std::endl;
 	}
 	return (0);
 }

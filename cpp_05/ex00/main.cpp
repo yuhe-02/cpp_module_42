@@ -123,6 +123,12 @@ int main() {
 		std::cout << s1 << std::endl;
 	}
 	{
+		std::cout << "----print test ----" << std::endl;
+		Bureaucrat *s1 = new Bureaucrat();
+		std::cout << s1 << std::endl;
+		delete s1;
+	}
+	{
 		std::cout << "----increment test ----" << std::endl;
 		Bureaucrat s1(5);
 		s1.incrementGrade();
