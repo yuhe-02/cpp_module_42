@@ -86,3 +86,13 @@ std::ostream& operator<<(std::ostream& os, const Form* Form) {
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }
+
+std::ostream& operator<<(std::ostream& os, Form* Form) {
+	std::string isAssigned_s = Form->getIsAssigned() == true ? "true" : "false";
+    os << "Form's information\n" 
+		<< "name:        "  << Form->getName() << "\n" 
+		<< "sign grade:  "  << Form->getSignGrade() << "\n" 
+		<< "exec grade:  "  << Form->getExecGrade() << "\n"
+		<< "is assigned: "  << isAssigned_s << "\n";
+    return os;
+}
