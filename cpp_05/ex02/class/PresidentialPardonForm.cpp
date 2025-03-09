@@ -31,10 +31,11 @@ std::string PresidentialPardonForm::getTarget( void ) const {
 }
 
 // TODO create function
-void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
-	// if (!this->getIsAssigned())
-	(void)executor;
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const
+{
+	this->AForm::execute(executor);
 	std::cout << "PresidentialPardonForm " << this->target_ << ": " << "execute called" << std::endl;
+	std::cout << "PresidentialPardonForm " << this->target_ << ": " << "has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& ppForm) {

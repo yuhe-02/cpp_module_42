@@ -4,17 +4,22 @@
 #include <string>
 #include "AForm.hpp"
 
-// class ShrubberyCreationForm : public AForm {
-// public:
-// 	ShrubberyCreationForm(const std::string &target);
-// 	ShrubberyCreationForm(const ShrubberyCreationForm &other);
-// 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-// 	virtual ~ShrubberyCreationForm();
+class ShrubberyCreationForm : public AForm {
+private:
+	std::string target_;
+public:
+	ShrubberyCreationForm();
+	ShrubberyCreationForm(const std::string &target);
+	ShrubberyCreationForm(const ShrubberyCreationForm &other);
+	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
+	std::string getTarget( void ) const;
+	virtual ~ShrubberyCreationForm();
 
-// 	void execute(const Bureaucrat &executor) const;
+	void execute(const Bureaucrat &executor) const;
+};
 
-// private:
-// 	std::string target;
-// };
+std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& scForm);
+std::ostream& operator<<(std::ostream& os, ShrubberyCreationForm& scForm);
 
 #endif
+
