@@ -1,12 +1,12 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main(void)
 {
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat();
-		Form *b = new Form();
+		AForm *b = new AForm();
 		std::cout << std::endl;
 
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
@@ -37,7 +37,7 @@ int main(void)
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *a = new Bureaucrat("Assistant", 145);
 		Bureaucrat *b = new Bureaucrat("CEO", 1);
-		Form *c = new Form("Rent Contract", 140, 100);
+		AForm *c = new AForm("Rent Contract", 140, 100);
 		std::cout << std::endl;
 
 		std::cout << "\033[34mTesting\033[0m" << std::endl;
@@ -84,14 +84,14 @@ int main(void)
 		std::cout << std::endl;
 
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-		Form *a = NULL;
+		AForm *a = NULL;
 
 		// sign-grade too high
 		try
 		{
-			a = new Form(160, 145);
+			a = new AForm(160, 145);
 		}
-		catch (Form::GradeTooLowException &e)
+		catch (AForm::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -100,9 +100,9 @@ int main(void)
 		// exec-grade too high
 		try
 		{
-			a = new Form(145, 160);
+			a = new AForm(145, 160);
 		}
-		catch (Form::GradeTooLowException &e)
+		catch (AForm::GradeTooLowException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -111,9 +111,9 @@ int main(void)
 		// sign-grade too low
 		try
 		{
-			a = new Form(-15, 145);
+			a = new AForm(-15, 145);
 		}
-		catch (Form::GradeTooHighException &e)
+		catch (AForm::GradeTooHighException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;
@@ -122,9 +122,9 @@ int main(void)
 		// exec-grade too low
 		try
 		{
-			a = new Form(145, -15);
+			a = new AForm(145, -15);
 		}
-		catch (Form::GradeTooHighException &e)
+		catch (AForm::GradeTooHighException &e)
 		{
 			std::cerr << "\033[33mConstructing default failed: " <<
 			e.what() << "\033[0m" << std::endl;

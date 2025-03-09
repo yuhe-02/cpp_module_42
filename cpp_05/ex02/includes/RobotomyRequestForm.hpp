@@ -4,17 +4,17 @@
 #include <string>
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public Form {
-public:
-	RobotomyRequestForm(const std::string &target);
-	RobotomyRequestForm(const RobotomyRequestForm &other);
-	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
-	virtual ~RobotomyRequestForm();
+// class RobotomyRequestForm : public AForm {
+// public:
+// 	RobotomyRequestForm(const std::string &target);
+// 	RobotomyRequestForm(const RobotomyRequestForm &other);
+// 	RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+// 	virtual ~RobotomyRequestForm();
 
-	void execute(const Bureaucrat &executor) const override;
+// 	void execute(const Bureaucrat &executor) const override;
 
-private:
-	std::string target;
-};
+// private:
+// 	std::string target;
+// };
 
 #endif

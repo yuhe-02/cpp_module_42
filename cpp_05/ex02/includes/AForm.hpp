@@ -1,5 +1,5 @@
-#ifndef __AAForm_HPP__
-#define __AAForm_HPP__
+#ifndef __AForm_HPP__
+#define __AForm_HPP__
 
 #include <string>
 #include <iostream>
@@ -36,4 +36,5 @@ class AForm {
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm* AForm);
+std::ostream& operator<<(std::ostream& os, AForm* AForm);
 #endif
