@@ -1,5 +1,5 @@
-#ifndef __AForm_HPP__
-#define __AForm_HPP__
+#ifndef __AFORM_HPP__
+#define __AFORM_HPP__
 
 #include <string>
 #include <iostream>
@@ -20,11 +20,19 @@ class AForm {
 		AForm(std::string name);
 		AForm &operator=(const AForm & copy);
 		~AForm();
-		class GradeTooHighException: std::exception {
+		class Exception: public std::exception {
 			public :
 				virtual const char *what() const throw();
 		};
-		class GradeTooLowException: std::exception {
+		class GradeTooHighException: public AForm::Exception {
+			public :
+				virtual const char *what() const throw();
+		};
+		class GradeTooLowException: public AForm::Exception {
+			public :
+				virtual const char *what() const throw();
+		};
+		class AlreadySignedException: public AForm::Exception {
 			public :
 				virtual const char *what() const throw();
 		};
@@ -35,6 +43,6 @@ class AForm {
 		const std::string getName( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const AForm* AForm);
-std::ostream& operator<<(std::ostream& os, AForm* AForm);
+std::ostream& operator<<(std::ostream& os, const AForm& AForm);
+std::ostream& operator<<(std::ostream& os, AForm& AForm);
 #endif

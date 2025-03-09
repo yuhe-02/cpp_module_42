@@ -20,11 +20,19 @@ class Form {
 		Form(std::string name);
 		Form &operator=(const Form & copy);
 		~Form();
-		class GradeTooHighException: std::exception {
+		class Exception: public std::exception {
 			public :
 				virtual const char *what() const throw();
 		};
-		class GradeTooLowException: std::exception {
+		class GradeTooHighException: public Form::Exception {
+			public :
+				virtual const char *what() const throw();
+		};
+		class GradeTooLowException: public Form::Exception {
+			public :
+				virtual const char *what() const throw();
+		};
+		class AlreadySignedException: public Form::Exception {
 			public :
 				virtual const char *what() const throw();
 		};
@@ -35,6 +43,6 @@ class Form {
 		const std::string getName( void ) const;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form* form);
-std::ostream& operator<<(std::ostream& os, Form* form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, Form& form);
 #endif

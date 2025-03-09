@@ -32,25 +32,27 @@ std::string PresidentialPardonForm::getTarget( void ) const {
 
 // TODO create function
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
+	// if (!this->getIsAssigned())
+	(void)executor;
 	std::cout << "PresidentialPardonForm " << this->target_ << ": " << "execute called" << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm* ppForm) {
-	std::string isAssigned_s = ppForm->getIsAssigned() == true ? "true" : "false";
+std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& ppForm) {
+	std::string isAssigned_s = ppForm.getIsAssigned() == true ? "true" : "false";
     os << "PresidentialPardonForm's inAFormation\n" 
-		<< "name:        "  << ppForm->getName() << "\n" 
-		<< "sign grade:  "  << ppForm->getSignGrade() << "\n" 
-		<< "exec grade:  "  << ppForm->getExecGrade() << "\n"
+		<< "name:        "  << ppForm.getName() << "\n" 
+		<< "sign grade:  "  << ppForm.getSignGrade() << "\n" 
+		<< "exec grade:  "  << ppForm.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, PresidentialPardonForm* ppForm) {
-	std::string isAssigned_s = ppForm->getIsAssigned() == true ? "true" : "false";
+std::ostream& operator<<(std::ostream& os, PresidentialPardonForm& ppForm) {
+	std::string isAssigned_s = ppForm.getIsAssigned() == true ? "true" : "false";
     os << "PresidentialPardonForm's inAFormation\n" 
-		<< "name:        "  << ppForm->getName() << "\n" 
-		<< "sign grade:  "  << ppForm->getSignGrade() << "\n" 
-		<< "exec grade:  "  << ppForm->getExecGrade() << "\n"
+		<< "name:        "  << ppForm.getName() << "\n" 
+		<< "sign grade:  "  << ppForm.getSignGrade() << "\n" 
+		<< "exec grade:  "  << ppForm.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }

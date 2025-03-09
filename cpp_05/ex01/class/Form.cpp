@@ -57,6 +57,10 @@ bool Form::getIsAssigned( void ) const {
 	return (this->isAssigned_);
 }
 
+const char *Form::Exception::what(void) const throw(){
+	return ("Form Exception");
+}
+
 const char *Form::GradeTooLowException::what(void) const throw(){
 	return ("grade is too low");
 }
@@ -65,34 +69,37 @@ const char *Form::GradeTooHighException::what(void) const throw(){
 	return ("grade is too high");
 }
 
-void Form::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() > this->getSignGrade())
-		throw(Bureaucrat::GradeTooLowException());
-	else if (this->getIsAssigned() == false)
-	{
-		this->isAssigned_ = true;
-		std::cout << this->getName() << " Form was signed by " << bureaucrat.getName() << std::endl;
-	}
-	else
-		std::cout << this->getName() << " Form is already signed" << std::endl;
+const char *Form::AlreadySignedException::what(void) const throw(){
+	return ("Form is already signed");
 }
 
-std::ostream& operator<<(std::ostream& os, const Form* Form) {
-	std::string isAssigned_s = Form->getIsAssigned() == true ? "true" : "false";
+void Form::beSigned(Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() > this->getSignGrade()) {
+		throw(Form::GradeTooLowException());
+	}
+	if (this->getIsAssigned() == true) {
+		throw(Form::AlreadySignedException());
+	}
+	this->isAssigned_ = true;
+	std::cout << this->getName() << " Form was signed by " << bureaucrat.getName() << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Form& form) {
+	std::string isAssigned_s = form.getIsAssigned() == true ? "true" : "false";
     os << "Form's information\n" 
-		<< "name:        "  << Form->getName() << "\n" 
-		<< "sign grade:  "  << Form->getSignGrade() << "\n" 
-		<< "exec grade:  "  << Form->getExecGrade() << "\n"
+		<< "name:        "  << form.getName() << "\n" 
+		<< "sign grade:  "  << form.getSignGrade() << "\n" 
+		<< "exec grade:  "  << form.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, Form* Form) {
-	std::string isAssigned_s = Form->getIsAssigned() == true ? "true" : "false";
+std::ostream& operator<<(std::ostream& os, Form& form) {
+	std::string isAssigned_s = form.getIsAssigned() == true ? "true" : "false";
     os << "Form's information\n" 
-		<< "name:        "  << Form->getName() << "\n" 
-		<< "sign grade:  "  << Form->getSignGrade() << "\n" 
-		<< "exec grade:  "  << Form->getExecGrade() << "\n"
+		<< "name:        "  << form.getName() << "\n" 
+		<< "sign grade:  "  << form.getSignGrade() << "\n" 
+		<< "exec grade:  "  << form.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }

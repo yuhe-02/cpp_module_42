@@ -73,7 +73,14 @@ const char *Bureaucrat::GradeTooHighException::what(void) const throw(){
 
 void	Bureaucrat::signForm(AForm &form)
 {
-	form.beSigned(*this);
+	try {
+		form.beSigned(*this);
+		std::cout << this->name_ << " signed " << form.getName() << std::endl;
+	}
+	catch (AForm::Exception &e) {
+		std::cout << this->name_ << " could't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+	
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat) {

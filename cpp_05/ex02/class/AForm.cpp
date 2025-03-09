@@ -57,6 +57,10 @@ bool AForm::getIsAssigned( void ) const {
 	return (this->isAssigned_);
 }
 
+const char *AForm::Exception::what(void) const throw(){
+	return ("AForm Exception");
+}
+
 const char *AForm::GradeTooLowException::what(void) const throw(){
 	return ("grade is too low");
 }
@@ -65,34 +69,37 @@ const char *AForm::GradeTooHighException::what(void) const throw(){
 	return ("grade is too high");
 }
 
-void AForm::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() > this->getSignGrade())
-		throw(Bureaucrat::GradeTooLowException());
-	else if (this->getIsAssigned() == false)
-	{
-		this->isAssigned_ = true;
-		std::cout << this->getName() << " AForm was signed by " << bureaucrat.getName() << std::endl;
-	}
-	else
-		std::cout << this->getName() << " AForm is already signed" << std::endl;
+const char *AForm::AlreadySignedException::what(void) const throw(){
+	return ("AForm is already signed");
 }
 
-std::ostream& operator<<(std::ostream& os, const AForm* AForm) {
-	std::string isAssigned_s = AForm->getIsAssigned() == true ? "true" : "false";
+void AForm::beSigned(Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() > this->getSignGrade()) {
+		throw(AForm::GradeTooLowException());
+	}
+	if (this->getIsAssigned() == true) {
+		throw(AForm::AlreadySignedException());
+	}
+	this->isAssigned_ = true;
+	std::cout << this->getName() << " AForm was signed by " << bureaucrat.getName() << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const AForm& AForm) {
+	std::string isAssigned_s = AForm.getIsAssigned() == true ? "true" : "false";
     os << "AForm's inAFormation\n" 
-		<< "name:        "  << AForm->getName() << "\n" 
-		<< "sign grade:  "  << AForm->getSignGrade() << "\n" 
-		<< "exec grade:  "  << AForm->getExecGrade() << "\n"
+		<< "name:        "  << AForm.getName() << "\n" 
+		<< "sign grade:  "  << AForm.getSignGrade() << "\n" 
+		<< "exec grade:  "  << AForm.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, AForm* AForm) {
-	std::string isAssigned_s = AForm->getIsAssigned() == true ? "true" : "false";
+std::ostream& operator<<(std::ostream& os, AForm& AForm) {
+	std::string isAssigned_s = AForm.getIsAssigned() == true ? "true" : "false";
     os << "AForm's inAFormation\n" 
-		<< "name:        "  << AForm->getName() << "\n" 
-		<< "sign grade:  "  << AForm->getSignGrade() << "\n" 
-		<< "exec grade:  "  << AForm->getExecGrade() << "\n"
+		<< "name:        "  << AForm.getName() << "\n" 
+		<< "sign grade:  "  << AForm.getSignGrade() << "\n" 
+		<< "exec grade:  "  << AForm.getExecGrade() << "\n"
 		<< "is assigned: "  << isAssigned_s << "\n";
     return os;
 }
