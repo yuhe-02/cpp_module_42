@@ -2,6 +2,8 @@
 #define __SHRUBBERYCREATIONFORM_HPP__
 
 #include <string>
+# include <fstream>
+# include <ios>
 #include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm {

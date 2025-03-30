@@ -30,7 +30,6 @@ std::string PresidentialPardonForm::getTarget( void ) const {
 	return (this->target_);
 }
 
-// TODO create function
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	this->AForm::execute(executor);

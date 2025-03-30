@@ -30,10 +30,15 @@ std::string RobotomyRequestForm::getTarget( void ) const {
 	return (this->target_);
 }
 
-// TODO create function
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	static bool i = false;
 	this->AForm::execute(executor);
+	i = !i;
+	if (i % 2 == 0)
+		std::cout << "RobotomyRequestForm " << this->target_ << ": " << "robotomy successful" << std::endl;
+	else
+		std::cout << "RobotomyRequestForm " << this->target_ << ": " << "robotomy failed" << std::endl;
 	std::cout << "RobotomyRequestForm " << this->target_ << ": " << "execute called" << std::endl;
 }
 

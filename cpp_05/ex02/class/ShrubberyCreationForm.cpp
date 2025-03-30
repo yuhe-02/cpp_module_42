@@ -30,10 +30,29 @@ std::string ShrubberyCreationForm::getTarget( void ) const {
 	return (this->target_);
 }
 
-// TODO create function
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	this->AForm::execute(executor);
+
+	std::fstream file;
+	std::string fileName = this->target_ + "_shrubbery";
+	file.open(fileName.c_str(), std::ios::out);
+	if (!file.is_open()) {
+		std::cout << "ShrubberyCreationForm " << this->target_ << ": " << "failed to execute" << std::endl;
+		return ;
+	}
+	file << "      /\\      \n"
+	     << "     /\\*\\     \n"
+	     << "    /\\O\\*\\    \n"
+	     << "   /*/\\/\\/\\   \n"
+	     << "  /\\O\\/\\*\\/\\  \n"
+	     << " /\\*\\/\\*\\/\\/\\ \n"
+	     << "/\\O\\/\\/*/\\/O/\\\n"
+	     << "      ||      \n"
+	     << "      ||      \n"
+	     << "      ||      \n";
+
+	file.close();
 	std::cout << "ShrubberyCreationForm " << this->target_ << ": " << "execute called" << std::endl;
 }
 
