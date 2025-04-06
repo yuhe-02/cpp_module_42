@@ -1,10 +1,9 @@
 #include <iostream>
-#include "ScalarConverter.hpp"
+#include "./includes/Bureaucrat.hpp"
 
 int main() {
 	{
 		std::cout << "----normal test----" << std::endl;
-		ScalarConverter::convert("42");
 	}
 	return (0);
 }

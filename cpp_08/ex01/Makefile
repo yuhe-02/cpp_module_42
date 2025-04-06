@@ -1,7 +1,7 @@
 CPP = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-PROGRAM_NAME = convert
+PROGRAM_NAME = template
 
 SRCDIR := .
 CLASSDIR := $(SRCDIR)/class
