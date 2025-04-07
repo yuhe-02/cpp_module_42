@@ -1,10 +1,16 @@
 #include <iostream>
 #include "ScalarConverter.hpp"
 
-int main() {
+int	main(int ac, char **av)
+{
+	int	n;
+
+	if (ac == 1)
+		return (0);
+	n = 1;
+	while (n < ac)
 	{
-		std::cout << "----normal test----" << std::endl;
-		ScalarConverter::convert("42");
+		ScalarConverter::convert(*(av + n));
+		n++;
 	}
-	return (0);
 }
