@@ -30,77 +30,86 @@ bool isPrintable(int c) {
 	return (c >= 32 && c <= 126);
 }
 
-bool isChar(const std::string &str) {
-	if (str.length() == 1) {
-		return true;
-	}
-	return false;
-}
-
-bool isInt(const std::string &str) {
-	if (str.length() == 0) {
-		return false;
-	}
-	for (size_t i = 0; i < str.length(); ++i) {
-		if (!isdigit(str[i])) {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isFloat(const std::string &str) {
-	if (str.length() == 0) {
-		return false;
-	}
-	for (size_t i = 0; i < str.length(); ++i) {
-		if (!isdigit(str[i]) && str[i] != '.' && str[i] != 'f') {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool isDouble(const std::string &str) {
-	if (str.length() == 0) {
-		return false;
-	}
-	for (size_t i = 0; i < str.length(); ++i) {
-		if (!isdigit(str[i]) && str[i] != '.') {
-			return false;
-		}
-	}
-	return true;
-}
 void ScalarConverter::convertChar(const std::string &str) {
 	int number_part;
 	std::string rest_part;
 	std::cout << "char: ";
-	if (isSpecial(str)) {
-		throw ImpossibleException();
+	try {
+		if (isSpecial(str)) {
+			throw ImpossibleException();
+		}
+		std::stringstream ss(str);
+		ss >> number_part;
+		ss >> rest_part;
+	
+		if (!isPrintable(number_part)) {
+			throw NonPrintableException();
+		}
+		std::cout << "'" << static_cast<char>(number_part) << "'" << std::endl;
+	} 
+	catch (const std::exception & e) {
+		std::cout << e.what() << std::endl;
 	}
-	std::stringstream ss(str);
-	ss >> number_part;
-	ss >> rest_part;
-	if (!isPrintable(number_part)) {
-		throw NonPrintableException();
+	return;
+}
+
+void ScalarConverter::convertInt(const std::string &str) {
+	char *float_end_ptr;
+	char *long_end_ptr;
+	std::cout << "int: ";
+	try {
+		if (isSpecial(str)) {
+			throw ImpossibleException();
+		}
+		std::strtof(str.c_str(), &float_end_ptr);
+		errno = 0;
+		long number = std::strtol(str.c_str(), &long_end_ptr, 10);
+		if (*long_end_ptr != '\0' && *float_end_ptr != '\0') {
+			throw ImpossibleException();
+		}
+		if (errno == ERANGE || number == LONG_MAX || number == LONG_MIN) {
+			throw ImpossibleException();
+		}
+		if (number < INT_MIN || number > INT_MAX) {
+			throw ImpossibleException();
+		}
+		std::cout << static_cast<int>(number) << std::endl;
+	} 
+	catch (const std::exception & e) {
+		std::cout << e.what() << std::endl;
 	}
-	std::cout << "'" << static_cast<char>(number_part) << "'" << std::endl;
+	return;
+}
+
+void ScalarConverter::convertFloat(const std::string &str) {
+	std::cout << "float: ";
+	(void)str;
+	try {
+		std::cout << "in process" << std::endl;
+	} 
+	catch (const std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
+	return;
+}
+
+void ScalarConverter::convertDouble(const std::string &str) {
+	(void)str;
+	std::cout << "double: ";
+	try {
+		std::cout << "in process" << std::endl;
+	} 
+	catch (const std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 	return;
 }
 
 void ScalarConverter::convert(const std::string &str) {
-	std::cout << "ScalarConverter " << "convert function called" << std::endl;
-	try {
-		ScalarConverter::convertChar(str);
-	} catch (const std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
-	// covertInt(str);
-	// covertFloat(str);
-	// covertDouble(str);
-	// TODO add logic
-	// Conversion logic goes here
+	ScalarConverter::convertChar(str);
+	ScalarConverter::convertInt(str);
+	ScalarConverter::convertFloat(str);
+	ScalarConverter::convertDouble(str);
 }
 
 const char *ScalarConverter::NonPrintableException::what() const throw() {

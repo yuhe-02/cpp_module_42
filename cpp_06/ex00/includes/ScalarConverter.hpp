@@ -1,6 +1,9 @@
 #pragma once
 
 #include <string>
+#include <cstdlib> 
+#include <cerrno>
+#include <climits> 
 // #include <iostream>
 
 // TODO fix this(インスタンス化できなくしてもいいのかな)
@@ -12,6 +15,9 @@ private:
 	ScalarConverter &operator=(const ScalarConverter & copy);
 	~ScalarConverter();
 	static void convertChar(const std::string &str);
+	static void convertInt(const std::string &str);
+	static void convertFloat(const std::string &str);
+	static void convertDouble(const std::string &str);
 public:
 	static void convert(const std::string &str);
 	class NonPrintableException : public std::exception { 
