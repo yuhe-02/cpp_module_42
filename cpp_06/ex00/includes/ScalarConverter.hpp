@@ -1,12 +1,12 @@
 #pragma once
 
-#include <string>
-#include <cstdlib> 
-#include <cerrno>
-#include <climits> 
+# include <string>
+# include <cstdlib> 
+# include <cerrno>
+# include <climits> 
+# include <cmath>
 // #include <iostream>
 
-// TODO fix this(インスタンス化できなくしてもいいのかな)
 class ScalarConverter
 {
 private:
@@ -30,5 +30,3 @@ public:
 	};
 };
 
-// std::ostream& operator<<(std::ostream& os, const ScalarConverter& ScalarConverter);
-// std::ostream& operator<<(std::ostream& os, const ScalarConverter* ScalarConverter);

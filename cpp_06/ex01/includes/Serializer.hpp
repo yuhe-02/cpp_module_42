@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <stdint.h>
 // #include <iostream>
 
 struct Data {
@@ -8,7 +9,6 @@ struct Data {
     std::string name;
 };
 
-// TODO fix this
 class Serializer
 {
 private:

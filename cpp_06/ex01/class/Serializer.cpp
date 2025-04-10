@@ -10,6 +10,7 @@ Serializer::~Serializer() {
 }
 
 Serializer::Serializer(const Serializer &copy) {
+	(void)copy;
 	std::cout << "Serializer " << "copy constructor called" << std::endl;
 }
 
@@ -20,13 +21,11 @@ Serializer &Serializer::operator=(const Serializer &copy) {
 	return *this;
 }
 
-// TODO fix this
 uintptr_t Serializer::serialize(Data* ptr) {
 	std::cout << "Serializer " << "serialize function called" << std::endl;
 	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-// TODO fix this
 Data* Serializer::deserialize(uintptr_t raw) {
 	std::cout << "Serializer " << "deserialize function called" << std::endl;
 	return reinterpret_cast<Data*>(raw);

@@ -67,7 +67,7 @@ void ScalarConverter::convertInt(const std::string &str) {
 		if (*long_end_ptr != '\0' && *float_end_ptr != '\0') {
 			throw ImpossibleException();
 		}
-		if (errno == ERANGE || number == LONG_MAX || number == LONG_MIN) {
+		if (errno == ERANGE) {
 			throw ImpossibleException();
 		}
 		if (number < INT_MIN || number > INT_MAX) {
@@ -82,10 +82,21 @@ void ScalarConverter::convertInt(const std::string &str) {
 }
 
 void ScalarConverter::convertFloat(const std::string &str) {
+	char *float_end_ptr;
 	std::cout << "float: ";
-	(void)str;
 	try {
-		std::cout << "in process" << std::endl;
+		errno = 0;
+		float num = std::strtof(str.c_str(), &float_end_ptr);
+		if (errno == ERANGE) {
+			throw ImpossibleException();
+		}
+		if (*float_end_ptr != '\0' && !(*float_end_ptr == 'f' && *(float_end_ptr + 1) == '\0')) {
+			throw ImpossibleException();
+		}
+		if (std::fmod(num, 1.0) == 0.0)
+		std::cout << num << ".0f" << std::endl;
+		else
+		std::cout << num << "f" << std::endl;
 	} 
 	catch (const std::exception & e) {
 		std::cout << e.what() << std::endl;
@@ -94,11 +105,22 @@ void ScalarConverter::convertFloat(const std::string &str) {
 }
 
 void ScalarConverter::convertDouble(const std::string &str) {
-	(void)str;
+	char *double_end_ptr;
 	std::cout << "double: ";
 	try {
-		std::cout << "in process" << std::endl;
-	} 
+		errno = 0;
+		double num = std::strtod(str.c_str(), &double_end_ptr);
+		if (errno == ERANGE) {
+			throw ImpossibleException();
+		}
+		if (*double_end_ptr != '\0') {
+			throw ImpossibleException();
+		}
+		if (std::fmod(num, 1.0) == 0.0)
+			std::cout << num << ".0" << std::endl;
+		else
+			std::cout << num << std::endl;
+		} 
 	catch (const std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}
