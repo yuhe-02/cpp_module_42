@@ -1,19 +1,16 @@
 #pragma once
 
-// #include <string>
-// #include <iostream>
-
-// TODO define template
-class Template
-{
-private:
-
-public:
-	Template();
-	Template(const Template &copy);
-	Template &operator=(const Template & copy);
-	~Template();
-};
-
-// std::ostream& operator<<(std::ostream& os, const Template& Template);
-// std::ostream& operator<<(std::ostream& os, const Template* Template);
+template <typename T>
+void swap(T &a, T &b) {
+	T temp = a;
+	a = b;
+	b = temp;
+}
+template <typename T>
+T min(T a, T b) {
+	return (a < b) ? a : b;
+}
+template <typename T>
+T max(T a, T b) {
+	return (a > b) ? a : b;
+}
