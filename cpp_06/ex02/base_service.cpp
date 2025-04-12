@@ -19,7 +19,7 @@ Base *generate(void) {
 }
 
 void identify(Base* p) {
-	std::cout << "Identifying type of pointer:";
+	std::cout << "Identifying type of pointer: ";
 	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(p))
@@ -30,7 +30,7 @@ void identify(Base* p) {
 		std::cout << "Unknown type" << std::endl;
 }
 void identify(Base& p) {
-	std::cout << "Identifying type of reference:";
+	std::cout << "Identifying type of reference: ";
 	if (dynamic_cast<A*>(&p))
 		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(&p))
