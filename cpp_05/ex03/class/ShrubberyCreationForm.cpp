@@ -20,6 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy):
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) {
 	std::cout << "ShrubberyCreationForm " << this->target_ << ": " << "copy assignment called" << std::endl;
+	AForm::operator=(copy);
 	if (this == &copy)
 		return *this;
 	return *this;

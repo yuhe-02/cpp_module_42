@@ -69,8 +69,14 @@ int	main(void)
 	std::cout << std::endl << std::endl;
 
 	std::cout << std::endl;
+	Form test;
+	Form test_ref;
+	test = test_ref;
+	std::cout << test_ref << std::endl;
 	std::cout << "DESTRUCTORS:" << std::endl;
 	std::cout << "----------------------------" << std::endl;
+
+
 	return (0);
 	//-------------------------------------------------------	
 }

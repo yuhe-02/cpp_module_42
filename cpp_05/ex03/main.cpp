@@ -32,12 +32,17 @@ int main(void)
 	// }
 	{
 		Intern intern;
+		AForm *a = 0;
+		AForm *b = 0;
+		AForm *c = 0;
+		AForm *f = 0;
+		Bureaucrat *d = 0;
 		try {
-			AForm *a = intern.makeForm("robotomy request", "Bender");
-			AForm *b = intern.makeForm("shrubbery creation", "home");
-			AForm *c = intern.makeForm("presidential pardon", "Bender");
-			AForm *f = intern.makeForm("nothing", "Bender");
-			Bureaucrat *d = new Bureaucrat(1);
+			a = intern.makeForm("robotomy request", "Bender");
+			b = intern.makeForm("shrubbery creation", "home");
+			c = intern.makeForm("presidential pardon", "Bender");
+			f = intern.makeForm("nothing", "Bender");
+			d = new Bureaucrat(1);
 			d->signForm(*a);
 			d->signForm(*b);
 			d->signForm(*c);
@@ -45,6 +50,16 @@ int main(void)
 		} catch (AForm::Exception &e) {
 			std::cout << "failed to exec : " << e.what() << std::endl;
 		}
+		if (a)
+			delete a;
+		if (b)
+			delete b;
+		if (c)
+			delete c;
+		if (f)
+			delete f;
+		if (d)
+			delete d;
 	}
 	
 	return (0);

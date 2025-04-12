@@ -35,6 +35,7 @@ AForm::AForm(const AForm &copy): name_(copy.getName()), isAssigned_(false), sign
 
 AForm &AForm::operator=(const AForm &copy) {
 	std::cout << "AForm " << this->name_ << ": " << "copy assignment called" << std::endl;
+	this->isAssigned_ = copy.getIsAssigned();
 	if (this == &copy)
 		return *this;
 	return *this;

@@ -19,7 +19,7 @@ class AForm {
 		AForm(int signGrade, int execGrade);
 		AForm(std::string name);
 		AForm &operator=(const AForm & copy);
-		~AForm();
+		virtual ~AForm();
 		class Exception: public std::exception {
 			public :
 				virtual const char *what() const throw();

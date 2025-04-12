@@ -35,6 +35,7 @@ Form::Form(const Form &copy): name_(copy.getName()), isAssigned_(false), signGra
 
 Form &Form::operator=(const Form &copy) {
 	std::cout << "Form " << this->name_ << ": " << "copy assignment called" << std::endl;
+	this->isAssigned_ = copy.getIsAssigned();
 	if (this == &copy)
 		return *this;
 	return *this;
