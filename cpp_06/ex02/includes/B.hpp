@@ -1,16 +1,11 @@
 #pragma once
 
-// #include <string>
-// #include <iostream>
-
-class B
+#include "Base.hpp"
+class B: public Base
 {
 private:
 
 public:
-	B();
-	B(const B &copy);
-	B &operator=(const B & copy);
 	~B();
 };
 

@@ -10,7 +10,9 @@ int	main(int ac, char **av)
 	n = 1;
 	while (n < ac)
 	{
+		std::cout << "Conversion of " << av[n] << ":\n";
 		ScalarConverter::convert(*(av + n));
+		std::cout << "---------------------------------\n";
 		n++;
 	}
 }
