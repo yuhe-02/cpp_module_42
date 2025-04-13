@@ -1,21 +1,9 @@
-#include "Template.hpp"
-#include <iostream>
-
-Template::Template() {
-	std::cout << "Template " << "default constructor called" << std::endl;
-}
-
-Template::~Template() {
-	std::cout << "Template " << "default destructor called" << std::endl;
-}
-
-Template::Template(const Template &copy) {
-	std::cout << "Template " << "copy constructor called" << std::endl;
-}
-
-Template &Template::operator=(const Template &copy) {
-	std::cout << "Template " << "copy assignment called" << std::endl;
-	if (this == &copy)
-		return *this;
-	return *this;
+template <typename T>
+int &easyfind(T &container, int number) {
+	typename T::iterator it = std::find(container.begin(), container.end(), number);
+	if (it == container.end())
+	{
+		throw std::exception();
+	}
+	return *it;
 }

@@ -1,19 +1,8 @@
 #pragma once
 
-// #include <string>
-// #include <iostream>
+#include <algorithm>
 
-// TODO define tempalte
-class Template
-{
-private:
+template <typename T>
+int &easyfind(T &container, int number);
 
-public:
-	Template();
-	Template(const Template &copy);
-	Template &operator=(const Template & copy);
-	~Template();
-};
-
-// std::ostream& operator<<(std::ostream& os, const Template& Template);
-// std::ostream& operator<<(std::ostream& os, const Template* Template);
+#include "../templates/easyfind.tpp"

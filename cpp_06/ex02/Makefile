@@ -23,8 +23,6 @@ $(PROGRAM_NAME): $(OBJS)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)/$(CLASSDIR)
-	@mkdir -p $(OBJDIR)/$(BASEDIR)
-	@mkdir -p $(OBJDIR)/$(DERIVEDDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<

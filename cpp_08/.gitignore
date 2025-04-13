@@ -1,0 +1,11 @@
+.vscode/
+objs/
+*.o
+
+# CPP 07
+template
+iter
+array
+
+# CPP 08
+easyfind
