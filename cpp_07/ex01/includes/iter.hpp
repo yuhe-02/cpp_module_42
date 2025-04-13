@@ -1,19 +1,10 @@
 #pragma once
 
-// #include <string>
-// #include <iostream>
-
-// TODO define iter
-class Template
+template <typename T>
+void iter(T *array, int length, void (*f)(T &))
 {
-private:
-
-public:
-	Template();
-	Template(const Template &copy);
-	Template &operator=(const Template & copy);
-	~Template();
-};
-
-// std::ostream& operator<<(std::ostream& os, const Template& Template);
-// std::ostream& operator<<(std::ostream& os, const Template* Template);
+	for (int i = 0; i < length; ++i)
+	{
+		f(array[i]);
+	}
+}

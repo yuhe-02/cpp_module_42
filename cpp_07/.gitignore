@@ -1,5 +1,6 @@
 .vscode/
 objs/
-convert
-serialize
-dynamic_cast
+template
+*.o
+iter
+array

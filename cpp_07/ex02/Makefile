@@ -1,16 +1,16 @@
 CPP = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-PROGRAM_NAME = template
+PROGRAM_NAME = array
 
 SRCDIR := .
 CLASSDIR := $(SRCDIR)/class
-INCDIR := ./includes
+INCDIR := ./includes ./templates
 
 SRC := $(wildcard $(SRCDIR)/*.cpp) \
        $(wildcard $(CLASSDIR)/*.cpp) \
 
-INCLUDES := -I$(INCDIR)
+INCLUDES := $(addprefix -I, $(INCDIR))
 
 OBJDIR := objs
 OBJS := $(SRC:$(SRCDIR)/%.cpp=$(OBJDIR)/$(SRCDIR)/%.o)
