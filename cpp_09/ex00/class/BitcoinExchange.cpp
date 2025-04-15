@@ -10,10 +10,12 @@ BitcoinExchange::~BitcoinExchange() {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
+	(void)copy;
 	std::cout << "BitcoinExchange " << "copy constructor called" << std::endl;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
+	(void)copy;
 	std::cout << "BitcoinExchange " << "copy assignment called" << std::endl;
 	if (this == &copy)
 		return *this;

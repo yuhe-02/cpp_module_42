@@ -1,7 +1,7 @@
 CPP = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
-PROGRAM_NAME = template
+PROGRAM_NAME = PmergeMe
 
 SRCDIR := .
 CLASSDIR := $(SRCDIR)/class
@@ -23,8 +23,6 @@ $(PROGRAM_NAME): $(OBJS)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)/$(CLASSDIR)
-	@mkdir -p $(OBJDIR)/$(BASEDIR)
-	@mkdir -p $(OBJDIR)/$(DERIVEDDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
 	$(CPP) $(CPP_FLAGS) $(INCLUDES) -o $@ -c $<
