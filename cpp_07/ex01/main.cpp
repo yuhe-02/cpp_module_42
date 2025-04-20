@@ -42,5 +42,23 @@ int main() {
 		}
 		std::cout << std::endl;
 	}
+	{
+		std::cout << "----normal test4----" << std::endl;
+		std::string test_array[] = {};
+		::iter(test_array, sizeof(test_array) / sizeof(test_array[0]), &add_string);
+		for (size_t i = 0; i < sizeof(test_array) / sizeof(test_array[0]); ++i) {
+			std::cout << test_array[i] << " ";
+		}
+		std::cout << std::endl;
+	}
+	{
+		std::cout << "----normal test5----" << std::endl;
+		std::string *test_array = 0;
+		::iter(test_array, 0, &add_string);
+		// for (size_t i = 0; i < sizeof(test_array) / sizeof(test_array[0]); ++i) {
+		// 	std::cout << test_array[i] << " ";
+		// }
+		std::cout << std::endl;
+	}
 	return (0);
 }
