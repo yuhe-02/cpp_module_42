@@ -16,6 +16,11 @@ class Array {
 		const T &operator[](unsigned int index) const;
 		unsigned int size() const;
 		~Array();
+		class OutOfBounds : public std::exception 
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 // placing after prototype declaration
 #include "../templates/Array.tpp"
