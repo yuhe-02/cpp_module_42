@@ -1,18 +1,22 @@
 #pragma once
 
 #include <string>
-
+#include <stack>
+#include <sstream>
 // #include <iostream>
 // TODO スタックで行けそう
+
+
+bool is_operator(const std::string &str);
 class ReversePolishCalculator
 {
 	private:
 		ReversePolishCalculator(const ReversePolishCalculator &copy);
 		ReversePolishCalculator &operator=(const ReversePolishCalculator & copy);
-	public:
-		ReversePolishCalculator();
-		int calculate(std::string formula);
 		~ReversePolishCalculator();
+		ReversePolishCalculator();
+	public:
+		static double calculate(const std::string &formula);
 };
 
 // std::ostream& operator<<(std::ostream& os, const ReversePolishCalculator& ReversePolishCalculator);

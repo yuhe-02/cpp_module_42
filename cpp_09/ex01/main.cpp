@@ -12,13 +12,12 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		ReversePolishCalculator rpn;
-		int res = rpn.calculate(std::string(argv[1]));
+		double res = ReversePolishCalculator::calculate(std::string(argv[1]));
 		std::cout << res << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Error" << std::endl;
 	}
 	return (0);
 }
