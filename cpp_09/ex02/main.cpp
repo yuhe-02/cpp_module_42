@@ -23,14 +23,21 @@ int main(int argc, char **argv)
 	{
 		std::cerr << "Error" << std::endl;
 	}
-	array = PmergeMe::create_numbers(&(argv[1]), argc - 1);
-	if (!array)
+	try 
 	{
-		std::cerr << "Error" << std::endl;
+		array = PmergeMe::create_numbers(&(argv[1]), argc - 1);
+		if (!array)
+		{
+			std::cerr << "Error" << std::endl;
+		}
+		else 
+		{
+			show(array, argc-1);
+		}
 	}
-	else 
+	catch (const std::exception &e) 
 	{
-		show(array, argc-1);
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
 	if (array)
 	{

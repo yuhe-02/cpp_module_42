@@ -45,9 +45,14 @@ int* PmergeMe::create_numbers(char **str_ptr, int size)
 		if (res == -1)
 		{
 			delete[] array;
-			return NULL;
+			throw PmergeMe::InvalidInput();
 		}
 		array[i] = res;
 	}
 	return array;
+}
+
+const char* PmergeMe::InvalidInput::what() const throw()
+{
+	return ("Invalid input");
 }
