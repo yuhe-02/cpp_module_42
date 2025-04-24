@@ -1,6 +1,7 @@
 #include <iostream>
 #include "./includes/PmergeMe.hpp"
 #include <sstream>
+#include <ctime>
 
 void show(int *array, int size)
 {
@@ -25,6 +26,7 @@ int main(int argc, char **argv)
 	}
 	try 
 	{
+		std::clock_t start = std::clock();
 		array = PmergeMe::create_numbers(&(argv[1]), argc - 1);
 		if (!array)
 		{
@@ -34,6 +36,11 @@ int main(int argc, char **argv)
 		{
 			show(array, argc-1);
 		}
+		std::clock_t end = std::clock();
+		double duration_us = (double)(end - start) * 1000000.0 / CLOCKS_PER_SEC;
+
+		std::cout << "Time to process a range of 5 elements with std::vector : "
+				  << duration_us << " us" << std::endl;
 	}
 	catch (const std::exception &e) 
 	{
