@@ -1,41 +1,57 @@
 #pragma once
-
-// #include <string>
-// #include <iostream>
-#include <list>
+#include <vector>
+#include <exception>
 #include <climits>
 
-class Span
-{
-private:
-	unsigned int size_;
-	unsigned int n_;
-	unsigned int min_span_;
-	unsigned int max_span_;
-	std::list<unsigned int> *data_;
-public:
-	Span();
-	Span(unsigned int n_);
-	Span(const Span &copy);
-	Span &operator=(const Span & copy);
-	~Span();
-	void addNumber(unsigned int number);
-	void show();
-	unsigned int shortestSpan();
-	unsigned int longestSpan();
-	class SpanException : public std::exception { 
-		public:
-			virtual const char *what() const throw() = 0;
-	};
-	class StoreLimitException: public SpanException { 
-		public:
-			virtual const char *what() const throw();
-	};
-	class NoSpanException : public SpanException { 
-		public:
-			virtual const char *what() const throw();
-	};
-};
+class Span {
+	private:
+		unsigned int n_;
+		std::vector<unsigned int> data_;
+		bool is_sorted_;
 
-// std::ostream& operator<<(std::ostream& os, const Span& Span);
-// std::ostream& operator<<(std::ostream& os, const Span* Span);
+	public:
+		Span();
+		Span(unsigned int n);
+		Span(const Span &copy);
+		Span &operator=(const Span &copy);
+		~Span();
+
+		void addNumber(unsigned int number);
+		unsigned int shortestSpan();
+		unsigned int longestSpan();
+		void show() const;
+
+		class StoreLimitException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+		class NoSpanException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+		class UnmatchTypeException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+
+		template <typename Iterator>
+		void addRange(Iterator begin, Iterator end)
+		{
+			std::size_t range_size = std::distance(begin, end);
+			if (this->data_.size() + range_size > n_)
+			{
+				throw StoreLimitException();
+			}
+			while (begin != end) 
+			{
+				long long value = static_cast<long long>(*begin);
+				if (value < 0 || value > UINT_MAX) 
+				{
+					throw UnmatchTypeException();
+				}
+				this->addNumber(static_cast<unsigned int>(value));
+				++begin;
+			}
+			this->is_sorted_ = false;
+		}
+};

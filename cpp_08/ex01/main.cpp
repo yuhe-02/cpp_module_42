@@ -102,5 +102,21 @@ int main() {
 			delete s; 
 		}
 	}
+	{
+		try {
+			std::cout << "----bulk insert----" << std::endl;
+			std::vector<int> input;
+			for (int i = 0; i < 10000; ++i)
+				input.push_back(i);
+			Span sp(10000);
+			sp.addRange(input.begin(), input.end());
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
 	return (0);
 }
