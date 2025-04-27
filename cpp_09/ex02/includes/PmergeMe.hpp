@@ -11,6 +11,7 @@ private:
 	PmergeMe &operator=(const PmergeMe & copy);
 	void merge_insertion_sort(std::vector<int>& arr, int l, int r);
 	void merge_insert(std::vector<int>& arr, int l, int mid, int r);
+	void show(const std::vector<int>& arr) const;
 public:
 	PmergeMe();
 	~PmergeMe();
