@@ -20,6 +20,7 @@ void show(int *array, int size)
 int main(int argc, char **argv) 
 {
 	int *array = NULL;
+	PmergeMe pmergeme;
 	if (argc < 2)
 	{
 		std::cerr << "Error" << std::endl;
@@ -34,7 +35,8 @@ int main(int argc, char **argv)
 		}
 		else 
 		{
-			show(array, argc-1);
+			// show(array, argc - 1);
+			pmergeme.execute_sort(array, argc - 1);
 		}
 		std::clock_t end = std::clock();
 		double duration_us = (double)(end - start) * 1000000.0 / CLOCKS_PER_SEC;

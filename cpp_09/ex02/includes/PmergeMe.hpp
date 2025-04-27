@@ -1,18 +1,22 @@
 #pragma once
 
 #include <string>
+#include <vector>
 // #include <iostream>
 
 class PmergeMe
 {
 private:
-	PmergeMe();
 	PmergeMe(const PmergeMe &copy);
 	PmergeMe &operator=(const PmergeMe & copy);
-	~PmergeMe();
+	void merge_insertion_sort(std::vector<int>& arr, int l, int r);
+	void merge_insert(std::vector<int>& arr, int l, int mid, int r);
 public:
+	PmergeMe();
+	~PmergeMe();
 	static int 	convert_positive_int(const std::string& str);
 	static int* create_numbers(char **str_ptr, int size);
+	void execute_sort(const int *array, const int size);
 	class PmergeMeException : public std::exception
 	{
 		public:
@@ -24,5 +28,3 @@ public:
 			virtual const char* what() const throw();
 	};
 };
-// std::ostream& operator<<(std::ostream& os, const PmergeMe& PmergeMe);
-// std::ostream& operator<<(std::ostream& os, const PmergeMe* PmergeMe);
