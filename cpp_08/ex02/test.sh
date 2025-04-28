@@ -1,2 +1,1 @@
-make re
-valgrind --leak-check=full -q ./temqplate
+make re valgrind-- leak - check = full - q./ temqplate

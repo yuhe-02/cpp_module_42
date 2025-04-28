@@ -2,7 +2,6 @@
 
 #include <algorithm>
 
-template <typename T>
-int &easyfind(T &container, int number);
+template <typename T> int &easyfind(T &container, int number);
 
 #include "../templates/easyfind.tpp"
