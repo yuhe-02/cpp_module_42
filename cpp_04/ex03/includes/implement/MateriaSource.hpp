@@ -4,18 +4,19 @@
 #include "IMateriaSource.hpp"
 #include <string>
 #define MAX_MATERIAL 4
-class MateriaSource : public IMateriaSource {
-private:
-  AMateria *equipments_[MAX_MATERIAL];
-  bool free_responsible_[MAX_MATERIAL];
+class MateriaSource : public IMateriaSource
+{
+  private:
+    AMateria *equipments_[MAX_MATERIAL];
+    bool free_responsible_[MAX_MATERIAL];
 
-public:
-  MateriaSource();
-  ~MateriaSource();
-  MateriaSource(const MateriaSource &other);
-  MateriaSource &operator=(const MateriaSource &other);
-  void learnMateria(AMateria *);
-  AMateria *createMateria(std::string const &type);
+  public:
+    MateriaSource();
+    ~MateriaSource();
+    MateriaSource(const MateriaSource &other);
+    MateriaSource &operator=(const MateriaSource &other);
+    void learnMateria(AMateria *);
+    AMateria *createMateria(std::string const &type);
 };
 
 #endif

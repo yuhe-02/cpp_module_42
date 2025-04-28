@@ -1,10 +1,11 @@
 #include "includes/Zombie.hpp"
 
-int main() {
-  Zombie *z = newZombie("allocate");
-  z->announce();
-  randomChump("stack");
+int main()
+{
+    Zombie *z = newZombie("allocate");
+    z->announce();
+    randomChump("stack");
 
-  delete (z);
-  return (0);
+    delete (z);
+    return (0);
 }

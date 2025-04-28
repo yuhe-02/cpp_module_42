@@ -194,26 +194,27 @@
 // 	return 0;
 // }
 
-int main() {
-  IMateriaSource *src = new MateriaSource();
-  AMateria *i = new Ice();
-  AMateria *c = new Cure();
-  AMateria *tmp1;
-  AMateria *tmp2;
-  src->learnMateria(i);
-  src->learnMateria(c);
-  ICharacter *me = new Character("me");
-  tmp1 = src->createMateria("ice");
-  me->equip(tmp1);
-  tmp2 = src->createMateria("cure");
-  me->equip(tmp2);
-  ICharacter *bob = new Character("bob");
-  me->use(0, *bob);
-  me->use(1, *bob);
+int main()
+{
+    IMateriaSource *src = new MateriaSource();
+    AMateria *i = new Ice();
+    AMateria *c = new Cure();
+    AMateria *tmp1;
+    AMateria *tmp2;
+    src->learnMateria(i);
+    src->learnMateria(c);
+    ICharacter *me = new Character("me");
+    tmp1 = src->createMateria("ice");
+    me->equip(tmp1);
+    tmp2 = src->createMateria("cure");
+    me->equip(tmp2);
+    ICharacter *bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
 
-  delete tmp1;
-  delete tmp2;
-  delete bob;
-  delete me;
-  delete src;
+    delete tmp1;
+    delete tmp2;
+    delete bob;
+    delete me;
+    delete src;
 }

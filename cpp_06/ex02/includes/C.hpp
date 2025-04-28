@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Base.hpp"
-class C : public Base {
-private:
-public:
-  ~C();
+class C : public Base
+{
+  private:
+  public:
+    ~C();
 };

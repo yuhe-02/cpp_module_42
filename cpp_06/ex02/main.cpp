@@ -2,19 +2,20 @@
 #include <ctime>
 #include <iostream>
 
-int main() {
-  {
-    std::cout << "----normal test----" << std::endl;
-    Base *base = generate();
-    Base *ref = 0;
-    Base &ref2 = *ref;
+int main()
+{
+    {
+        std::cout << "----normal test----" << std::endl;
+        Base *base = generate();
+        Base *ref = 0;
+        Base &ref2 = *ref;
 
-    identify(base);
-    identify(*base);
-    identify(ref);
-    identify(ref2);
+        identify(base);
+        identify(*base);
+        identify(ref);
+        identify(ref2);
 
-    delete base;
-  }
-  return (0);
+        delete base;
+    }
+    return (0);
 }

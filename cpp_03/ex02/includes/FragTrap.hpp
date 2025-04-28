@@ -8,13 +8,14 @@
 #define DF3_EP 100
 #define DF3_AD 30
 
-class FragTrap : public ClapTrap {
-public:
-  FragTrap();
-  FragTrap(const std::string name);
-  FragTrap(const FragTrap &other);
-  ~FragTrap();
-  FragTrap &operator=(const FragTrap &other);
-  void highFivesGuys(void);
+class FragTrap : public ClapTrap
+{
+  public:
+    FragTrap();
+    FragTrap(const std::string name);
+    FragTrap(const FragTrap &other);
+    ~FragTrap();
+    FragTrap &operator=(const FragTrap &other);
+    void highFivesGuys(void);
 };
 #endif
