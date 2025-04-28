@@ -1,5 +1,5 @@
-#include <iostream>
 #include "includes/Fixed.hpp"
+#include <iostream>
 
 // int main( void ) {
 // 	Fixed a;
@@ -21,19 +21,19 @@
 // 	return (0);
 // }
 
-int main( void ) {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	Fixed const c( 2 );
-	Fixed const d( 2.0f );
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
+int main(void) {
+  Fixed a;
+  Fixed const b(Fixed(5.05f) * Fixed(2));
+  Fixed const c(2);
+  Fixed const d(2.0f);
+  std::cout << a << std::endl;
+  std::cout << ++a << std::endl;
+  std::cout << a << std::endl;
+  std::cout << a++ << std::endl;
+  std::cout << a << std::endl;
 
-	std::cout << b << std::endl;
+  std::cout << b << std::endl;
 
-	std::cout << Fixed::max( b, a ) << std::endl;
-	return (0);
+  std::cout << Fixed::max(b, a) << std::endl;
+  return (0);
 }

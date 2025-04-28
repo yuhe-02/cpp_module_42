@@ -1,12 +1,10 @@
 #pragma once
 
 #include "Base.hpp"
-class B: public Base
-{
+class B : public Base {
 private:
-
 public:
-	~B();
+  ~B();
 };
 
 // std::ostream& operator<<(std::ostream& os, const B& B);

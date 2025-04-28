@@ -1,11 +1,11 @@
-#include <iostream>
-#include "Cure.hpp"
-#include "Ice.hpp"
 #include "AMateria.hpp"
 #include "Character.hpp"
+#include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "IMateriaSource.hpp"
+#include "Ice.hpp"
 #include "MateriaSource.hpp"
+#include <iostream>
 
 // int main()
 // {
@@ -20,11 +20,10 @@
 // 		delete j;
 // 	}
 // 	{
-// 		std::cout << "------default constructor test------" << std::endl;
-// 		Ice ice;
-// 		Cure cure;
-// 		std::cout << "Ice: " << ice.getType() << std::endl;
-// 		std::cout << "Cure: " << cure.getType() << std::endl;
+// 		std::cout << "------default constructor test------" <<
+// std::endl; 		Ice ice; 		Cure cure;
+// std::cout << "Ice: " << ice.getType() << std::endl; 		std::cout <<
+// "Cure: " << cure.getType() << std::endl;
 // 	}
 // 	{
 // 		std::cout << "------copy assignment test------" << std::endl;
@@ -62,9 +61,9 @@
 // 		delete j;
 // 	}
 // 	{
-// 		std::cout << "------default constructor test------" << std::endl;
-// 		Character character;
-// 		std::cout << "Character: " << character.getName() << std::endl;
+// 		std::cout << "------default constructor test------" <<
+// std::endl; 		Character character; 		std::cout << "Character:
+// " << character.getName() << std::endl;
 // 	}
 // 	{
 // 		std::cout << "------copy assignment test------" << std::endl;
@@ -179,7 +178,7 @@
 // 		i.equip(j3);
 // 		i.equip(j4);
 // 		Character i2(i);
-		
+
 // 		AMateria *tmp = i2.getEquipment(1);
 // 		i2.unequip(1);
 // 		i.unequip(1);
@@ -195,27 +194,26 @@
 // 	return 0;
 // }
 
-int main()
-{
-	IMateriaSource* src = new MateriaSource();
-	AMateria *i = new Ice();
-	AMateria *c = new Cure();
-	AMateria* tmp1;
-	AMateria* tmp2;
-	src->learnMateria(i);
-	src->learnMateria(c);
-	ICharacter* me = new Character("me");
-	tmp1 = src->createMateria("ice");
-	me->equip(tmp1);
-	tmp2 = src->createMateria("cure");
-	me->equip(tmp2);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
+int main() {
+  IMateriaSource *src = new MateriaSource();
+  AMateria *i = new Ice();
+  AMateria *c = new Cure();
+  AMateria *tmp1;
+  AMateria *tmp2;
+  src->learnMateria(i);
+  src->learnMateria(c);
+  ICharacter *me = new Character("me");
+  tmp1 = src->createMateria("ice");
+  me->equip(tmp1);
+  tmp2 = src->createMateria("cure");
+  me->equip(tmp2);
+  ICharacter *bob = new Character("bob");
+  me->use(0, *bob);
+  me->use(1, *bob);
 
-	delete tmp1;
-	delete tmp2;
-	delete bob;
-	delete me;
-	delete src;
+  delete tmp1;
+  delete tmp2;
+  delete bob;
+  delete me;
+  delete src;
 }

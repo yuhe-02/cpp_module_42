@@ -2,5 +2,6 @@
 #include <iostream>
 
 C::~C() {
-	std::cout << "C " << "default destructor called" << std::endl;
+  std::cout << "C "
+            << "default destructor called" << std::endl;
 }

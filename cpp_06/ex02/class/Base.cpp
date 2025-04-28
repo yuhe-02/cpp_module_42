@@ -2,5 +2,6 @@
 #include <iostream>
 
 Base::~Base() {
-	std::cout << "Base " << "default destructor called" << std::endl;
+  std::cout << "Base "
+            << "default destructor called" << std::endl;
 }

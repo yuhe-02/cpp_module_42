@@ -10,25 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cctype>
+#include <iostream>
 
-int main(int argc, char **argv)
-{
-	std::string	msg;
+int main(int argc, char **argv) {
+  std::string msg;
 
-	msg = "* LOUD AND UNBEARABLE FEEDBACL NOISE *";
-	if (argc == 1)
-		return (std::cout << msg << std::endl,0);
-	for (int i = 1; i < argc; i++)
-	{
-		msg = "";
-		for (int j = 0; argv[i][j] != '\0'; j++)
-			msg += (char)toupper(argv[i][j]);
-		std::cout << msg;	
- 		if (argv[i] != NULL)
- 			std::cout << " ";
-	}
-	std::cout << std::endl;
-    return (0);
+  msg = "* LOUD AND UNBEARABLE FEEDBACL NOISE *";
+  if (argc == 1)
+    return (std::cout << msg << std::endl, 0);
+  for (int i = 1; i < argc; i++) {
+    msg = "";
+    for (int j = 0; argv[i][j] != '\0'; j++)
+      msg += (char)toupper(argv[i][j]);
+    std::cout << msg;
+    if (argv[i] != NULL)
+      std::cout << " ";
+  }
+  std::cout << std::endl;
+  return (0);
 }
