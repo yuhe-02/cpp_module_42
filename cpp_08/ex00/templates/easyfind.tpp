@@ -1,12 +1,18 @@
 #include "easyfind.hpp"
 
-template <typename T> int &easyfind(T &container, int number)
+const char *NotFoundException::what() const throw()
+{
+  return "Number not found in container";
+}
+
+template <typename T> 
+typename T::iterator easyfind(T &container, int number)
 {
   typename T::iterator it =
       std::find(container.begin(), container.end(), number);
   if (it == container.end())
   {
-    throw std::out_of_range("Number not found in container");
+    throw NotFoundException();
   }
-  return *it;
+  return it;
 }

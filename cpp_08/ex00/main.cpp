@@ -13,7 +13,8 @@ int main()
             hoge.push_back(3);
             hoge.push_back(1);
             hoge.push_back(4);
-            std::cout << ::easyfind(hoge, 3) << std::endl;
+            std::vector<int>::iterator it = ::easyfind(hoge, 3);
+            std::cout << "find: " << *it << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -27,7 +28,24 @@ int main()
             std::deque<int> q;
             q.push_back(2);
             q.push_back(3);
-            std::cout << ::easyfind(q, 4) << std::endl;
+            std::deque<int>::iterator it = ::easyfind(q, 90);
+            std::cout << "find: " << *it << std::endl;
+        }
+        catch (const std::exception &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
+    }
+    {
+        try
+        {
+            std::cout << "----normal test----" << std::endl;
+            std::vector<int> hoge;
+            hoge.push_back(3);
+            hoge.push_back(1);
+            hoge.push_back(4);
+            std::vector<int>::iterator it = ::easyfind(hoge, 3);
+            std::cout << "find: " << *it << std::endl;
         }
         catch (const std::exception &e)
         {

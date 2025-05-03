@@ -38,7 +38,9 @@ Span::~Span()
 void Span::addNumber(unsigned int number)
 {
     if (this->data_.size() >= n_)
+    {
         throw StoreLimitException();
+    }
     this->data_.push_back(number);
     is_sorted_ = false;
 }
@@ -59,7 +61,9 @@ unsigned int Span::shortestSpan()
     {
         unsigned int diff = this->data_[i] - this->data_[i - 1];
         if (diff < min_span)
+        {
             min_span = diff;
+        }
     }
     return min_span;
 }
@@ -67,25 +71,15 @@ unsigned int Span::shortestSpan()
 unsigned int Span::longestSpan()
 {
     if (this->data_.size() < 2)
+    {
         throw NoSpanException();
+    }
     if (!is_sorted_)
     {
         std::sort(this->data_.begin(), this->data_.end());
         is_sorted_ = true;
     }
     return this->data_.back() - this->data_.front();
-}
-
-void Span::show() const
-{
-    std::cout << "[";
-    for (size_t i = 0; i < this->data_.size(); ++i)
-    {
-        if (i != 0)
-            std::cout << ",";
-        std::cout << this->data_[i];
-    }
-    std::cout << "]" << std::endl;
 }
 
 const char *Span::StoreLimitException::what() const throw()
