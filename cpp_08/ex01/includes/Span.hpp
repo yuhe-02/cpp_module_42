@@ -20,7 +20,6 @@ class Span
     void addNumber(unsigned int number);
     unsigned int shortestSpan();
     unsigned int longestSpan();
-    void show() const;
 
     class StoreLimitException : public std::exception
     {
@@ -38,10 +37,11 @@ class Span
         virtual const char *what() const throw();
     };
 
-    template <typename Iterator> void addRange(Iterator begin, Iterator end)
+    template <typename T> 
+    void addRange(T begin, T end)
     {
         std::size_t range_size = std::distance(begin, end);
-        if (this->data_.size() + range_size > n_)
+        if (this->data_.size() + range_size > this->n_)
         {
             throw StoreLimitException();
         }

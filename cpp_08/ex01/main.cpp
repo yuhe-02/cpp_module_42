@@ -119,10 +119,47 @@ int main()
             sp.addRange(input.begin(), input.end());
             std::cout << sp.shortestSpan() << std::endl;
             std::cout << sp.longestSpan() << std::endl;
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
+            sp.addNumber(10000);
         }
         catch (const std::exception &e)
         {
             std::cout << e.what() << std::endl;
+        }
+    }
+    {
+        try
+        {
+            std::cout << "----bulk insert2----" << std::endl;
+            std::vector<int> input;
+            Span sp(10000);
+            sp.addRange(input.begin(), input.end());
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
+            
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
+    {
+        try
+        {
+            std::cout << "----copy----" << std::endl;
+            Span sp(10000);
+            sp.addNumber(1);
+            Span sp2(sp);
+            sp2.addNumber(2);
+            // std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp2.shortestSpan() << std::endl;
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
         }
     }
     return (0);

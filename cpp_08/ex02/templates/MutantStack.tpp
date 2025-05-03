@@ -1,11 +1,14 @@
 #include "../includes/MutantStack.hpp"
+#include <iostream>
 
-template <typename T> MutantStack<T>::MutantStack()
+template <typename T> 
+MutantStack<T>::MutantStack()
 {
   std::cout << "MutantStack: " << "Default Constructor called" << std::endl;
 }
 
-template <typename T> MutantStack<T>::~MutantStack()
+template <typename T> 
+MutantStack<T>::~MutantStack()
 {
   std::cout << "MutantStack: " << "Destructor called" << std::endl;
 }
@@ -24,12 +27,14 @@ MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &other)
   return *this;
 }
 
-template <typename T> typename MutantStack<T>::iterator MutantStack<T>::begin()
+template <typename T> 
+typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
   return this->c.begin();
 }
 
-template <typename T> typename MutantStack<T>::iterator MutantStack<T>::end()
+template <typename T> 
+typename MutantStack<T>::iterator MutantStack<T>::end()
 {
   return this->c.end();
 }
