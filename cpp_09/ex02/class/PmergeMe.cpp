@@ -119,6 +119,38 @@ void PmergeMe::merge_insertion_sort(std::vector<int> &arr, int l, int r)
 }
 
 /*
+ * Insertion sort algorithm
+ *
+ * @param arr: array to be sorted
+ * @param array_size: size of the array
+ */
+void PmergeMe::insert_sort(std::vector<int> &arr, int array_size)
+{
+    int i, j;
+    int tmp;
+
+    for (i = 1; i < array_size; i++)
+    {
+        // 整列されていない部分の先頭を指す
+        j = i;
+        // 交換要素のためのインデックス
+
+        // 整列済みの場合は処理しない
+        while ((j > 0) && (arr[j - 1] > arr[j]))
+        {
+            // 整列されていない隣り合う要素を交換する
+            tmp = arr[j - 1];
+            arr[j - 1] = arr[j];
+            arr[j] = tmp;
+            // 隣り合う要素のインデックスを更新
+
+            // this->PmergeMe::show(arr);
+            j--;
+        }
+    }
+}
+
+/*
  * Merge two sorted arrays
  *
  * @param arr: array to be sorted
@@ -187,7 +219,8 @@ void PmergeMe::execute_sort(const int *array, const int size)
     int end = (size - (size % 2));
     std::vector<int> array_vec(array, array + size);
     this->show(array_vec);
-    this->merge_sort(array_vec, 0, size);
+    // this->merge_sort(array_vec, 0, size);
+    this->insert_sort(array_vec, size);
     this->show(array_vec);
 }
 
