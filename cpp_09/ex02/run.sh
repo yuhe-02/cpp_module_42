@@ -1,3 +1,4 @@
+make re
 ./PmergeMe 3 5 9 7 4 2 1
 # Before: 3 5 9 7 4
 # After: 3 4 5 7 9

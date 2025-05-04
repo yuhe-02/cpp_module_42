@@ -119,6 +119,64 @@ void PmergeMe::merge_insertion_sort(std::vector<int> &arr, int l, int r)
 }
 
 /*
+ * Merge two sorted arrays
+ *
+ * @param arr: array to be sorted
+ * @param l: left index
+ * @param mid: middle index
+ * @param r: right index
+ */
+void PmergeMe::merge(std::vector<int> &arr, int l, int mid, int r)
+{
+    std::vector<int> left(arr.begin() + l, arr.begin() + mid);
+    std::vector<int> right(arr.begin() + mid, arr.begin() + r);
+
+    int i = 0, j = 0, k = l;
+    while (i < (int)left.size() && j < (int)right.size())
+    {
+        if (left[i] <= right[j])
+        {
+            arr[k++] = left[i++];
+        }
+        else
+        {
+            arr[k++] = right[j++];
+        }
+    }
+
+    while (i < (int)left.size())
+    {
+        arr[k++] = left[i++];
+    }
+
+    while (j < (int)right.size())
+    {
+        arr[k++] = right[j++];
+    }
+}
+
+/*
+ * Merge sort algorithm
+ *
+ * @param arr: array to be sorted
+ * @param l: left index
+ * @param r: right index
+ */
+void PmergeMe::merge_sort(std::vector<int> &arr, int l, int r)
+{
+
+    if (r - l <= 1)
+    {
+        return;
+    }
+    int mid = (l + r) / 2;
+    std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]" << std::endl;
+    this->PmergeMe::merge_sort(arr, l, mid);
+    this->PmergeMe::merge_sort(arr, mid, r);
+    this->PmergeMe::merge(arr, l, mid, r);
+}
+
+/*
  * Execute the merge insertion sort algorithm
  *
  * @param array: array to be sorted
@@ -129,10 +187,13 @@ void PmergeMe::execute_sort(const int *array, const int size)
     int end = (size - (size % 2));
     std::vector<int> array_vec(array, array + size);
     this->show(array_vec);
-    this->merge_insertion_sort(array_vec, 0, end);
+    this->merge_sort(array_vec, 0, size);
     this->show(array_vec);
 }
 
+/*
+ * Exception class for invalid input
+ */
 const char *PmergeMe::InvalidInput::what() const throw()
 {
     return ("Invalid input");
