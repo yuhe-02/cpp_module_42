@@ -151,6 +151,54 @@ void PmergeMe::insert_sort(std::vector<int> &arr, int array_size)
 }
 
 /*
+ * Binary search algorithm
+ *
+ * @param begin: start iterator
+ * @param end: end iterator
+ * @param value: value to be searched
+ */
+std::vector<int>::iterator PmergeMe::bisect(std::vector<int>::iterator begin,
+    std::vector<int>::iterator end, int value)
+{
+    while (begin < end)
+    {
+        std::vector<int>::iterator mid = begin + (end - begin) / 2;
+        if (*mid < value)
+        {
+            begin = mid + 1;
+        }
+        else
+        {
+            end = mid;
+        }
+    }
+    return begin;
+}
+
+
+/*
+ * binary Insertion sort algorithm
+ *
+ * @param arr: array to be sorted
+ * @param array_size: size of the array
+ */
+void PmergeMe::binary_insert_sort(std::vector<int> &arr, int array_size)
+{
+    for (int i = 1; i < array_size; ++i)
+    {
+        int key = arr[i];
+        std::vector<int>::iterator insert_pos = this->bisect(
+            arr.begin(), arr.begin() + i, key);
+        for (std::vector<int>::iterator it = arr.begin() + i; 
+            it != insert_pos; --it)
+        {
+            *it = *(it - 1);
+        }
+        *insert_pos = key;
+    }
+}
+
+/*
  * Merge two sorted arrays
  *
  * @param arr: array to be sorted
@@ -220,7 +268,8 @@ void PmergeMe::execute_sort(const int *array, const int size)
     std::vector<int> array_vec(array, array + size);
     this->show(array_vec);
     // this->merge_sort(array_vec, 0, size);
-    this->insert_sort(array_vec, size);
+    // this->insert_sort(array_vec, size);
+    this->binary_insert_sort(array_vec, size);
     this->show(array_vec);
 }
 
