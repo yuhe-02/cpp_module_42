@@ -95,6 +95,12 @@ void PmergeMe::merge_insert(std::vector<int> &arr, int l, int mid, int r)
     std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]"
               << " "
               << "merge-insert: [" << arr[l] << ", " << arr[mid] << ", " << arr[r] << "]" << std::endl;
+    if (arr[l] > arr[mid])
+    {
+        std::swap_ranges(arr.begin() + l, arr.begin() + mid, arr.begin() + mid);
+        std::cout << "after: ";
+        this->PmergeMe::show(arr);
+    }
 }
 
 /*
@@ -113,8 +119,8 @@ void PmergeMe::merge_insertion_sort(std::vector<int> &arr, int l, int r)
     }
     int mid = (l + r) / 2;
     std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]" << std::endl;
-    this->PmergeMe::merge_insertion_sort(arr, mid, r);
     this->PmergeMe::merge_insertion_sort(arr, l, mid);
+    this->PmergeMe::merge_insertion_sort(arr, mid, r);
     this->PmergeMe::merge_insert(arr, l, mid, r);
 }
 
@@ -147,6 +153,50 @@ void PmergeMe::insert_sort(std::vector<int> &arr, int array_size)
             // this->PmergeMe::show(arr);
             j--;
         }
+    }
+}
+
+/*
+ * Binary search algorithm
+ *
+ * @param begin: start iterator
+ * @param end: end iterator
+ * @param value: value to be searched
+ */
+std::vector<int>::iterator PmergeMe::bisect(std::vector<int>::iterator begin, std::vector<int>::iterator end, int value)
+{
+    while (begin < end)
+    {
+        std::vector<int>::iterator mid = begin + (end - begin) / 2;
+        if (*mid < value)
+        {
+            begin = mid + 1;
+        }
+        else
+        {
+            end = mid;
+        }
+    }
+    return begin;
+}
+
+/*
+ * binary Insertion sort algorithm
+ *
+ * @param arr: array to be sorted
+ * @param array_size: size of the array
+ */
+void PmergeMe::binary_insert_sort(std::vector<int> &arr, int array_size)
+{
+    for (int i = 1; i < array_size; ++i)
+    {
+        int key = arr[i];
+        std::vector<int>::iterator insert_pos = this->bisect(arr.begin(), arr.begin() + i, key);
+        for (std::vector<int>::iterator it = arr.begin() + i; it != insert_pos; --it)
+        {
+            *it = *(it - 1);
+        }
+        *insert_pos = key;
     }
 }
 
@@ -220,7 +270,9 @@ void PmergeMe::execute_sort(const int *array, const int size)
     std::vector<int> array_vec(array, array + size);
     this->show(array_vec);
     // this->merge_sort(array_vec, 0, size);
-    this->insert_sort(array_vec, size);
+    // this->insert_sort(array_vec, size);
+    // this->binary_insert_sort(array_vec, size);
+    this->merge_insertion_sort(array_vec, 0, size - 1);
     this->show(array_vec);
 }
 

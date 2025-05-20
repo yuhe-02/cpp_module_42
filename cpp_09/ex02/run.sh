@@ -1,6 +1,13 @@
+#!/bin/bash
+
+# 再ビルド
 make re
-./PmergeMe 3 5 9 7 4 2 1
-# Before: 3 5 9 7 4
-# After: 3 4 5 7 9
-# Time to process a range of 5 elements with std::[..] : 0.00031 us
-# Time to process a range of 5 elements with std::[..] : 0.00014 us
+
+# 手動テスト
+echo "------ 手動引数テスト ------"
+./PmergeMe 3 5 9 7 4 2 6 8 1
+
+# ランダムテスト
+# echo "------ ランダムテスト (1～10000の数字100個) ------"
+# RANDOM_NUMS=$(for i in {1..3000}; do echo -n "$((RANDOM % 10000 + 1)) "; done)
+# ./PmergeMe $RANDOM_NUMS
