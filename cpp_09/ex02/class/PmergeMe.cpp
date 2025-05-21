@@ -90,12 +90,12 @@ void PmergeMe::show(const std::vector<int> &arr) const
  * @param mid: middle index
  * @param r: right index
  */
-void PmergeMe::merge_insert(std::vector<int> &arr, int l, int mid, int r)
+void PmergeMe::merge_insert(std::vector<int> &arr, int l, int mid, int r, int chunk_size)
 {
     std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]"
               << " "
               << "merge-insert: [" << arr[l] << ", " << arr[mid] << ", " << arr[r] << "]" << std::endl;
-    if (arr[l] > arr[mid])
+    if (arr[mid - 1] > arr[r - 1])
     {
         std::swap_ranges(arr.begin() + l, arr.begin() + mid, arr.begin() + mid);
         std::cout << "after: ";
@@ -112,16 +112,25 @@ void PmergeMe::merge_insert(std::vector<int> &arr, int l, int mid, int r)
  */
 void PmergeMe::merge_insertion_sort(std::vector<int> &arr, int l, int r)
 {
-
     if (r - l <= 1)
     {
         return;
     }
     int mid = (l + r) / 2;
-    std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]" << std::endl;
-    this->PmergeMe::merge_insertion_sort(arr, l, mid);
-    this->PmergeMe::merge_insertion_sort(arr, mid, r);
-    this->PmergeMe::merge_insert(arr, l, mid, r);
+    // std::cout << "index: [l, mid, r] = [" << l << ", " << (l + r) / 2 << ", " << r << "]" << std::endl;
+    int size = r - l;
+    int chunk_size = 2;
+    while (chunk_size <= size)
+    {
+        for (int i = l; i < r; i += chunk_size)
+        {
+            int current_l = i;
+            int current_r = std::min(i + chunk_size, r);
+            int current_mid = (current_l + current_r) / 2;
+            this->PmergeMe::merge_insert(arr, current_l, current_mid, current_r, chunk_size);
+        }
+        chunk_size *= 2;
+    }
 }
 
 /*
